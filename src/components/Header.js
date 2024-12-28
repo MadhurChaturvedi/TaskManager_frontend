@@ -7,18 +7,18 @@ import { MdOutlineManageAccounts } from "react-icons/md";
 // infinity
 export default function Header() {
     return (
-        <header className="flex justify-around items-center p-4 border-x-2">
+        <header className="flex justify-around items-center p-4">
             <UseAnimations animation={github} size={45} />
             <ul className="flex gap-7 items-center text-xl font-normal">
                 <Link
-                    to={"/"}
+                    to={"/login"}
                     className="text-black hover:text-blue-600 transition-all cursor-pointer flex items-center gap-1"
                 >
                     <BiLogIn />
                     LOGIN
                 </Link>
                 <Link
-                    to={"/login"}
+                    to={"/register"}
                     className="text-black hover:text-blue-600 transition-all cursor-pointer flex items-center gap-1"
                 >
                     <MdOutlineManageAccounts />
