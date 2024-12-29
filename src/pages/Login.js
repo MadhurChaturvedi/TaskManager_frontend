@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 
-
 const color = red[500];
 // 21:31
 export default function Register() {
@@ -24,7 +23,7 @@ export default function Register() {
     const handleClickShowPassword = () => {
         setShowPassword((show) => !show);
         setReshowPassword((show) => !show);
-    }
+    };
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
@@ -35,47 +34,49 @@ export default function Register() {
     });
 
     const { email, password } = formData;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { user, isLoading, isError, message, isSuccess } = useSelector((state) => state.auth)
-
+    const { user, isLoading, isError, message, isSuccess } = useSelector(
+        (state) => state.auth
+    );
 
     useEffect(() => {
         if (isError) {
-            toast.error(message)
+            toast.error(message);
         }
         if (isSuccess || user) {
-            navigate('/')
+            navigate("/");
         }
-        dispatch(reset())
-    }, [user, isError, isSuccess, navigate, dispatch])
+        dispatch(reset());
+    }, [user, isError, isSuccess, navigate, dispatch]);
 
     const changeHandler = (e) => {
         setFormData((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
-        }))
+        }));
     };
-
 
     const onSubmit = (e) => {
         e.preventDefault();
         const userData = {
             email,
-            password
-        }
-        dispatch(login(userData))
-    }
+            password,
+        };
+        dispatch(login(userData));
+    };
 
     if (isLoading) {
-        return <Spinner />
+        return <Spinner />;
     }
 
-
     return (
-        <div className="h-[91vh]  flex justify-center items-center" onSubmit={onSubmit}>
-            <form className="w-[50%] h-auto p-10 rounded-lg" >
+        <div
+            className="h-[91vh]  flex justify-center items-center"
+            onSubmit={onSubmit}
+        >
+            <form className="md:w-[50%] h-auto p-10 md:rounded-lg sm:w-full">
                 <Grid2 container spacing={2}>
                     {/* <Grid2 size={12}>
                         <h1 className="font-medium text-2xl">TaskManager Register</h1>
@@ -88,14 +89,19 @@ export default function Register() {
                             fullWidth
                             id="outlined-basic"
                             color="black"
-                            className="text-black"
+                            className="text-black sm:w-fit"
                             label="Email"
                             variant="outlined"
                         />
                     </Grid2>
                     <Grid2 size={12}>
-                        <FormControl color="dark" className="text-black" fullWidth variant="outlined">
-                            <InputLabel fullWidth htmlFor="outlined-adornment-password">
+                        <FormControl
+                            color="dark"
+                            className="text-black"
+                            fullWidth
+                            variant="outlined"
+                        >
+                            <InputLabel  htmlFor="outlined-adornment-password">
                                 Password
                             </InputLabel>
                             <OutlinedInput
@@ -107,7 +113,11 @@ export default function Register() {
                                 id="outlined-adornment-password"
                                 type={showPassword ? "text" : "password"}
                                 endAdornment={
-                                    <InputAdornment className="text-black" position="end" fullWidth>
+                                    <InputAdornment
+                                        className="text-black"
+                                        position="end"
+                                        fullWidth
+                                    >
                                         <IconButton
                                             aria-label="toggle password visibility"
                                             onClick={handleClickShowPassword}
@@ -125,7 +135,6 @@ export default function Register() {
 
                     <Grid2 size={12}>
                         <button
-                            fullWidth
                             className="bg-black w-full p-3 
                         rounded-xl text-xl uppercase font-bold 
                         transition-all text-white
