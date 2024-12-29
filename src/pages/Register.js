@@ -1,69 +1,93 @@
-import { Grid2, TextField, Button } from "@mui/material";
+import { Grid2, TextField } from "@mui/material";
 import { useState } from "react";
-import girlBook from '../assets/bookgirl.mp4'
 import { AiOutlineEye } from "react-icons/ai";
 import { IoEyeOff } from "react-icons/io5";
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
-import IconButton from '@mui/material/IconButton';
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormControl from "@mui/material/FormControl";
+import IconButton from "@mui/material/IconButton";
+import { red } from "@mui/material/colors";
+
+const color = red[500];
 // 21:31
 export default function Register() {
     const [showPassword, setShowPassword] = useState(false);
+    const [ReshowPassword, setReshowPassword] = useState(false);
 
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleClickShowPassword = () => {
+        setShowPassword((show) => !show);
+        setReshowPassword((show) => !show);
+    }
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        password2: '',
-    })
+        name: "",
+        email: "",
+        password: "",
+        password2: "",
+    });
 
-
-    const { name, email, password, password2 } = formData;
+    const { name, email, password } = formData;
 
     const changeHandler = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.name]:e.target.value,
+        }))
+    };
 
 
-    }
     return (
-        <div className="h-[92vh] flex justify-center items-center ">
-            <div className="w-[50%] h-full">
-                <video
-                    src={girlBook}
-                    className="w-full h-full object-cover"
-                    
-                    autoPlay
-                    loop
-                    muted
-                >
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <form className="w-[50%] h-auto p-10 rounded-lg">
+        <div className="h-[91vh]  flex justify-center items-center">
+            <form className="w-[50%] h-auto p-10 rounded-lg" >
                 <Grid2 container spacing={2}>
                     {/* <Grid2 size={12}>
                         <h1 className="font-medium text-2xl">TaskManager Register</h1>
                     </Grid2> */}
-                    <Grid2 size={12} >
-                        <TextField name="name" value={name} onChange={changeHandler} fullWidth id="outlined-basic" color="black" className="text-black" label="Name" variant="outlined" />
+                    <Grid2 size={12}>
+                        <TextField
+                            name="name"
+                            value={name}
+                            onChange={changeHandler}
+                            fullWidth
+                            id="outlined-basic"
+                            color="black"
+                            className="text-black"
+                            label="Name"
+                            variant="outlined"
+                        />
                     </Grid2>
-                    <Grid2 size={12} >
-                        <TextField name="email" value={email} onChange={changeHandler} fullWidth id="outlined-basic" color="black" className="text-black" label="Email" variant="outlined" />
+                    <Grid2 size={12}>
+                        <TextField
+                            name="email"
+                            value={email}
+                            onChange={changeHandler}
+                            fullWidth
+                            id="outlined-basic"
+                            color="black"
+                            className="text-black"
+                            label="Email"
+                            variant="outlined"
+                        />
                     </Grid2>
-                    <Grid2 size={12} >
-                        <FormControl fullWidth variant="outlined">
-                            <InputLabel fullWidth htmlFor="outlined-adornment-password">Password</InputLabel>
-                            <OutlinedInput fullWidth
+                    <Grid2 size={12}>
+                        <FormControl color="dark" className="text-black" fullWidth variant="outlined">
+                            <InputLabel fullWidth htmlFor="outlined-adornment-password">
+                                Password
+                            </InputLabel>
+                            <OutlinedInput
+                                name="password"
+                                value={password}
+                                className="text-black"
+                                onChange={changeHandler}
+                                fullWidth
                                 id="outlined-adornment-password"
-                                type={showPassword ? 'text' : 'password'}
+                                type={showPassword ? "text" : "password"}
                                 endAdornment={
-                                    <InputAdornment position="end" fullWidth>
+                                    <InputAdornment className="text-black" position="end" fullWidth>
                                         <IconButton
                                             aria-label="toggle password visibility"
                                             onClick={handleClickShowPassword}
@@ -78,15 +102,32 @@ export default function Register() {
                             />
                         </FormControl>
                     </Grid2>
-                    <Grid2 size={12} >
-                        <FormControl fullWidth variant="outlined">
-                            <InputLabel fullWidth htmlFor="outlined-adornment-password">Re-Password</InputLabel>
-                            <OutlinedInput fullWidth
+                    {/* <Grid2 size={12}>
+                        <FormControl color="dark" fullWidth variant="outlined">
+                            <InputLabel
+                                color="back"
+                                className="text-black"
+                                fullWidth
+                                htmlFor="outlined-adornment-password"
+                            >
+                                Re-Password
+                            </InputLabel>
+                            <OutlinedInput
+                                name="password2"
+                                value={password2}
+                                onChange={changeHandler}
+
                                 id="outlined-adornment-password"
-                                type={showPassword ? 'text' : 'password'}
+                                className="text-black"
+                                type={showPassword ? "text" : "password"}
                                 endAdornment={
-                                    <InputAdornment position="end" fullWidth>
+                                    <InputAdornment
+                                        position="end"
+                                        className="text-black"
+
+                                    >
                                         <IconButton
+                                            className="text-black"
                                             aria-label="toggle password visibility"
                                             onClick={handleClickShowPassword}
                                             onMouseDown={handleMouseDownPassword}
@@ -99,12 +140,21 @@ export default function Register() {
                                 label="Re-Password"
                             />
                         </FormControl>
-                    </Grid2>
-                    <Grid2 size={12} >
-                        <Button color="warning" fullWidth variant="contained">Register</Button>
+                    </Grid2> */}
+                    <Grid2 size={12}>
+                        <button
+                            fullWidth
+                            className="bg-black w-full p-3 
+                        rounded-xl text-xl uppercase font-bold 
+                        transition-all text-white
+                        active:opacity-25
+                        "
+                        >
+                            Register
+                        </button>
                     </Grid2>
                 </Grid2>
             </form>
-        </div >
-    )
+        </div>
+    );
 }
