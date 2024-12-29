@@ -1,6 +1,6 @@
 import { Grid2, TextField, Button } from "@mui/material";
 import { useState } from "react";
-import Garden from '../assets/garden.jpg'
+import girlBook from '../assets/bookgirl.mp4'
 import { AiOutlineEye } from "react-icons/ai";
 import { IoEyeOff } from "react-icons/io5";
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -34,7 +34,16 @@ export default function Register() {
     return (
         <div className="h-[92vh] flex justify-center items-center ">
             <div className="w-[50%] h-full">
-                <img src={Garden} className="w-full h-full object-cover" alt="Garden" />
+                <video
+                    src={girlBook}
+                    className="w-full h-full object-cover"
+                    
+                    autoPlay
+                    loop
+                    muted
+                >
+                    Your browser does not support the video tag.
+                </video>
             </div>
             <form className="w-[50%] h-auto p-10 rounded-lg">
                 <Grid2 container spacing={2}>
