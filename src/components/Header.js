@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { TbLogout2 } from "react-icons/tb";
 import { toast } from "react-toastify";
+import { RiAdminFill } from "react-icons/ri";
 import { logout, reset } from '../features/auth/authSlice'
 
 
@@ -35,9 +36,17 @@ export default function Header() {
             <ul className="flex gap-7 items-center text-xl font-normal">
                 {
                     user ? <>
+                        <Link
+                            className="text-white bg-blue-600 rounded-2xl px-3 p-1 transition-all cursor-pointer flex items-center gap-1"
+                        >
+                            <RiAdminFill />
+                            {
+                                user.name
+                            }
+                        </Link>
                         <button
                             onClick={onLogout}
-                            className="text-black hover:text-blue-600 transition-all cursor-pointer flex items-center gap-1"
+                            className="text-black bg-white hover:text-blue-600 transition-all cursor-pointer flex items-center gap-1"
                         >
                             <TbLogout2 />
                             LOGOUT

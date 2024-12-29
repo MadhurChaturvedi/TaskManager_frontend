@@ -4,7 +4,11 @@ import infinity from "react-useanimations/lib/infinity";
 export default function Spinner() {
     return (
         <div className='h-screen flex justify-center items-center '>
-            <UseAnimations animation={infinity} size={45} />
+            {
+                setTimeout(() => {
+                    <UseAnimations animation={infinity} size={45} />
+                }, [2000])
+            }
         </div>
     )
 }

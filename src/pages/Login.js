@@ -101,7 +101,7 @@ export default function Register() {
                             fullWidth
                             variant="outlined"
                         >
-                            <InputLabel  htmlFor="outlined-adornment-password">
+                            <InputLabel htmlFor="outlined-adornment-password">
                                 Password
                             </InputLabel>
                             <OutlinedInput
