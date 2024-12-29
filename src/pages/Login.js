@@ -1,5 +1,5 @@
 import { Grid2, TextField } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { IoEyeOff } from "react-icons/io5";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -8,6 +8,12 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import IconButton from "@mui/material/IconButton";
 import { red } from "@mui/material/colors";
+import { login, reset } from "../features/auth/authSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import Spinner from "../components/Spinner";
+
 
 const color = red[500];
 // 21:31
@@ -29,6 +35,21 @@ export default function Register() {
     });
 
     const { email, password } = formData;
+    const navigate = useNavigate()
+    const dispatch = useDispatch();
+
+    const { user, isLoading, isError, message, isSuccess } = useSelector((state) => state.auth)
+
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(message)
+        }
+        if (isSuccess || user) {
+            navigate('/')
+        }
+        dispatch(reset())
+    }, [user, isError, isSuccess, navigate, dispatch])
 
     const changeHandler = (e) => {
         setFormData((prevState) => ({
@@ -38,8 +59,22 @@ export default function Register() {
     };
 
 
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const userData = {
+            email,
+            password
+        }
+        dispatch(login(userData))
+    }
+
+    if (isLoading) {
+        return <Spinner />
+    }
+
+
     return (
-        <div className="h-[91vh]  flex justify-center items-center">
+        <div className="h-[91vh]  flex justify-center items-center" onSubmit={onSubmit}>
             <form className="w-[50%] h-auto p-10 rounded-lg" >
                 <Grid2 container spacing={2}>
                     {/* <Grid2 size={12}>

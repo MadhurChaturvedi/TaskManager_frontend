@@ -19,11 +19,9 @@ const color = red[500];
 // 21:31
 export default function Register() {
     const [showPassword, setShowPassword] = useState(false);
-    const [ReshowPassword, setReshowPassword] = useState(false);
 
     const handleClickShowPassword = () => {
         setShowPassword((show) => !show);
-        setReshowPassword((show) => !show);
     }
 
     const handleMouseDownPassword = (event) => {
@@ -112,7 +110,7 @@ export default function Register() {
                     </Grid2>
                     <Grid2 size={12}>
                         <FormControl color="dark" className="text-black" fullWidth variant="outlined">
-                            <InputLabel fullWidth htmlFor="outlined-adornment-password">
+                            <InputLabel htmlFor="outlined-adornment-password">
                                 Password
                             </InputLabel>
                             <OutlinedInput
@@ -120,11 +118,10 @@ export default function Register() {
                                 value={password}
                                 className="text-black"
                                 onChange={changeHandler}
-                                fullWidth
                                 id="outlined-adornment-password"
                                 type={showPassword ? "text" : "password"}
                                 endAdornment={
-                                    <InputAdornment className="text-black" position="end" fullWidth>
+                                    <InputAdornment className="text-black" position="end" >
                                         <IconButton
                                             aria-label="toggle password visibility"
                                             onClick={handleClickShowPassword}
@@ -139,45 +136,6 @@ export default function Register() {
                             />
                         </FormControl>
                     </Grid2>
-                    {/* <Grid2 size={12}>
-                        <FormControl color="dark" fullWidth variant="outlined">
-                            <InputLabel
-                                color="back"
-                                className="text-black"
-                                fullWidth
-                                htmlFor="outlined-adornment-password"
-                            >
-                                Re-Password
-                            </InputLabel>
-                            <OutlinedInput
-                                name="password2"
-                                value={password2}
-                                onChange={changeHandler}
-
-                                id="outlined-adornment-password"
-                                className="text-black"
-                                type={showPassword ? "text" : "password"}
-                                endAdornment={
-                                    <InputAdornment
-                                        position="end"
-                                        className="text-black"
-
-                                    >
-                                        <IconButton
-                                            className="text-black"
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            edge="end"
-                                        >
-                                            {showPassword ? <AiOutlineEye /> : <IoEyeOff />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                                label="Re-Password"
-                            />
-                        </FormControl>
-                    </Grid2> */}
                     <Grid2 size={12}>
                         <button
                             fullWidth
