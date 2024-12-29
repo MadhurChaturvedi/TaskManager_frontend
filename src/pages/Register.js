@@ -1,5 +1,5 @@
 import { Grid2, TextField } from "@mui/material";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { IoEyeOff } from "react-icons/io5";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -8,8 +8,14 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import IconButton from "@mui/material/IconButton";
 import { red } from "@mui/material/colors";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { register, reset } from '../features/auth/authSlice'
+import Spinner from "../components/Spinner";
 
 const color = red[500];
+
 // 21:31
 export default function Register() {
     const [showPassword, setShowPassword] = useState(false);
@@ -32,17 +38,48 @@ export default function Register() {
 
     const { name, email, password } = formData;
 
+    const navigate = useNavigate()
+    const dispatch = useDispatch();
+
+    const { user, isLoading, isError, message, isSuccess } = useSelector((state) => state.auth)
+
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(message)
+        }
+        if (isSuccess || user) {
+            navigate('/')
+        }
+        dispatch(reset())
+    }, [user, isError, isSuccess, navigate, dispatch])
+
     const changeHandler = (e) => {
         setFormData((prevState) => ({
             ...prevState,
-            [e.target.name]:e.target.value,
+            [e.target.name]: e.target.value,
         }))
     };
 
 
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const userData = {
+            name,
+            email,
+            password
+        }
+        dispatch(register(userData))
+    }
+
+    if (isLoading) {
+        return <Spinner />
+    }
+
     return (
         <div className="h-[91vh]  flex justify-center items-center">
-            <form className="w-[50%] h-auto p-10 rounded-lg" >
+            <form className="w-[50%] h-auto p-10 rounded-lg" onSubmit={onSubmit} >
                 <Grid2 container spacing={2}>
                     {/* <Grid2 size={12}>
                         <h1 className="font-medium text-2xl">TaskManager Register</h1>

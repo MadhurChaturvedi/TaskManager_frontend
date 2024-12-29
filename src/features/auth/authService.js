@@ -1,6 +1,8 @@
 import axios from "axios";
+import env from "react-dotenv";
 
-const API_URl = '/api/users/'
+
+const API_URl = `http://localhost:8080/api/user/register`
 
 // Register user
 const register = async (userData) => {
