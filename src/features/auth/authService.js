@@ -5,7 +5,7 @@ import axios from "axios";
 // Register user
 
 const register = async (userData) => {
-    const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/register`, userData)
+    const response = await axios.post(`https://taskmanager-backend-9taa.onrender.com/api/user/register`, userData)
     
     if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data))
@@ -19,7 +19,7 @@ const logout = async () => {
 }
 
 const login = async (userData) => {
-    const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/login`, userData)
+    const response = await axios.post(`https://taskmanager-backend-9taa.onrender.com/api/user/login`, userData)
 
     if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data))

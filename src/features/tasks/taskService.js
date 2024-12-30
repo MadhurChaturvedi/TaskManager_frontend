@@ -23,7 +23,7 @@ const getTasks = async (token) => {
   };
 
   try {
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/tasks/`, config);
+    const response = await axios.get(`https://taskmanager-backend-9taa.onrender.com/api/tasks/`, config);
     console.log("API Response:", response.data); // Log the response here
     return response.data;
   } catch (error) {
@@ -40,7 +40,7 @@ const deleteTask = async (id, token) => {
   };
 
   try {
-    const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/tasks/` + id, config);
+    const response = await axios.delete(`https://taskmanager-backend-9taa.onrender.com/api/tasks/` + id, config);
     console.log("API Response:", response.data); // Log the response here
     return response.data;
   } catch (error) {
