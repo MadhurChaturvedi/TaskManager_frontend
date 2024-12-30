@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import TaskForm from "../components/TaskForm";
 import Spinner from '../components/Spinner';
-import { getTask, reset, createTask } from "../features/tasks/taskSlice";
+import { getTask, reset, createTask, deleteTask } from "../features/tasks/taskSlice";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -33,6 +33,14 @@ export default function Dashboard() {
     dispatch(getTask()); // Re-fetch tasks to include the new task
   };
 
+  const handleDeleteTask = (taskId) => {
+    // Dispatch delete task action
+    dispatch(deleteTask(taskId));
+
+    // Optionally, refetch the tasks after deletion to update the UI
+    dispatch(getTask());
+  };
+
   console.log(tasks);
 
   if (isLoading) {
@@ -54,11 +62,19 @@ export default function Dashboard() {
                 <h6 className="text-lg font-semibold text-gray-800">
                   {task.text}
                 </h6>
-                <p className="text-sm text-gray-500 mt-2">
-                  {
-                    new Date(task.createdAt).toLocaleString('en-US')
-                  }
-                </p>
+                <div className="flex justify-between items-center">
+                  <p className="text-sm text-gray-500 mt-2">
+                    {
+                      new Date(task.createdAt).toLocaleString('en-US')
+                    }
+                  </p>
+                  <button
+                    onClick={() => handleDeleteTask(task._id)}
+                    className="bg-red-600 p-1 rounded-md text-white"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             ))
           ) : (

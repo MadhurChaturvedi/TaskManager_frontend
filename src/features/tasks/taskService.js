@@ -33,10 +33,27 @@ const getTasks = async (token) => {
   }
 };
 
+const deleteTask = async (id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    const response = await axios.delete(API_URL + id, config);
+    console.log("API Response:", response.data); // Log the response here
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+    throw error; // Re-throw error to handle it in your Redux slice
+  }
+};
 
 const taskService = {
   createTask,
   getTasks,
+  deleteTask
 };
 
 export default taskService;
