@@ -31,18 +31,19 @@ export default function Header() {
         toast.success("Logged out successfully", { autoClose: 1000, });
     }
     return (
-        <header className="flex justify-around items-center p-2">
+        <header className="flex md:justify-around  justify-between px-3 items-center p-2">
             <UseAnimations animation={github} size={45} />
             <ul className="flex gap-7 items-center text-xl font-normal">
                 {
                     user ? <>
                         <Link
-                            className="text-white bg-blue-600 rounded-2xl px-3 p-1 transition-all cursor-pointer flex items-center gap-1"
+                            className="text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-3 p-1 transition-all cursor-pointer flex items-center gap-1"
                         >
-                            <RiAdminFill />
-                            {
+
+                            Hi &nbsp;
+                            <span className="uppercase">{
                                 user.name
-                            }
+                            }</span>
                         </Link>
                         <button
                             onClick={onLogout}

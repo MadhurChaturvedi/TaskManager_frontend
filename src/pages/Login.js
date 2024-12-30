@@ -73,10 +73,10 @@ export default function Register() {
 
     return (
         <div
-            className="h-[91vh]  flex justify-center items-center"
+            className="md:h-[90vh] h-[85vh] overscroll-none flex justify-center items-center "
             onSubmit={onSubmit}
         >
-            <form className="md:w-[50%] h-auto p-10 md:rounded-lg sm:w-full">
+            <form className="md:w-[40%] h-auto p-10 md:rounded-lg sm:w-full">
                 <Grid2 container spacing={2}>
                     {/* <Grid2 size={12}>
                         <h1 className="font-medium text-2xl">TaskManager Register</h1>
@@ -136,7 +136,7 @@ export default function Register() {
                     <Grid2 size={12}>
                         <button
                             className="bg-black w-full p-3 
-                        rounded-xl text-xl uppercase font-bold 
+                         text-xl uppercase font-bold 
                         transition-all text-white
                         active:opacity-25
                         "

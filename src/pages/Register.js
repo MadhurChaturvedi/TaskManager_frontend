@@ -44,7 +44,7 @@ export default function Register() {
 
     useEffect(() => {
         if (isError) {
-            toast.error(message)
+            toast.error(message, { autoClose: 1000, })
         }
         if (isSuccess || user) {
             navigate('/')
@@ -77,7 +77,7 @@ export default function Register() {
 
     return (
         <div className="h-[91vh]  flex justify-center items-center ">
-            <form className="md:w-[50%] h-auto p-10 md:rounded-lg sm:w-full " onSubmit={onSubmit} >
+            <form className="md:w-[40%] h-auto p-10 md:rounded-lg sm:w-full " onSubmit={onSubmit} >
                 <Grid2 container spacing={2}>
                     {/* <Grid2 size={12}>
                         <h1 className="font-medium text-2xl">TaskManager Register</h1>
