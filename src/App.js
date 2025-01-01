@@ -11,8 +11,6 @@ function App() {
     <BrowserRouter >
       <Header />
       <Routes>
-        {/* Here i will make hero landing page */}
-        {/* <Route  path="" element={'/'}/> */}
 
         <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />

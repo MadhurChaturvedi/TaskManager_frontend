@@ -10,7 +10,7 @@ const createTask = async (taskData, token) => {
   };
 
   const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/tasks/`, taskData, config);
-  return response.data;
+  return await response.data;
 };
 
 // Fetch all tasks
@@ -25,7 +25,7 @@ const getTasks = async (token) => {
   try {
     const response = await axios.get(`https://taskmanager-backend-9taa.onrender.com/api/tasks/`, config);
     console.log("API Response:", response.data); // Log the response here
-    return response.data;
+    return await response.data;
   } catch (error) {
     console.error("Error fetching tasks:", error);
     throw error; // Re-throw error to handle it in your Redux slice
@@ -41,8 +41,8 @@ const deleteTask = async (id, token) => {
 
   try {
     const response = await axios.delete(`https://taskmanager-backend-9taa.onrender.com/api/tasks/` + id, config);
-    console.log("API Response:", response.data); // Log the response here
-    return response.data;
+    // console.log("API Response:", response.data); // Log the response here
+    return await response.data;
   } catch (error) {
     console.error("Error fetching tasks:", error);
     throw error; // Re-throw error to handle it in your Redux slice
