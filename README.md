@@ -17,6 +17,4 @@ A simple and efficient Task Manager application built with React and Redux Toolk
 ## Installation and Setup
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/task-manager.git
-```
+   ```bash git clone https://github.com/yourusername/task-manager.git ```
