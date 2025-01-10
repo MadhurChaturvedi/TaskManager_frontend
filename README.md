@@ -1,20 +1,23 @@
-# Task Manager App
+# Task Manager Application
 
-A simple and efficient Task Manager application built with React and Redux Toolkit. This app allows users to create and delete tasks, offering a clean and user-friendly interface for managing their to-dos.
+A frontend web application that allows users to register, log in, and manage their day-to-day tasks. This project is built using **React.js**, **Tailwind CSS**, and **Redux Toolkit** for state management.
 
 ## Features
 
-- **Create Tasks**: Add new tasks to your task list.
-- **Delete Tasks**: Remove tasks from the list effortlessly.
-- **State Management**: Powered by Redux Toolkit for robust and scalable state handling.
+- **User Authentication**: Register and log in securely.
+- **Task Management**: Add, update, and delete tasks efficiently.
+- **Responsive Design**: Optimized for desktop and mobile devices.
+- **State Management**: Powered by Redux Toolkit for seamless state handling.
 
-## Technologies Used
+## Tech Stack
 
-- **Frontend**: React.js
+- **Frontend**: React.js, Tailwind CSS
 - **State Management**: Redux Toolkit
-- **Styling**: (Add your preferred CSS framework or custom styling method, e.g., Tailwind CSS, CSS modules, etc.)
+- **Tools**: Vite (or Create React App, if applicable)
 
 ## Installation and Setup
 
-1. Clone the repository:
-   ```bash git clone https://github.com/yourusername/task-manager.git ```
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/task-manager.git
+   cd task-manager
