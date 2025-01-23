@@ -20,4 +20,4 @@ A frontend web application that allows users to register, log in, and manage the
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/your-username/task-manager.git
-   cd task-manager
+   cd task-manager ```
